@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>हैप्पी वर्ड गेम</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; background: #1e1e2f; color: #eee;
+    font-family: sans-serif; padding: 10px;
+  }
+  h2 { margin: 8px; }
+  .letters { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 14px; }
+  .letter {
+    width: 56px; height: 56px; font-size: 26px; border: none; border-radius: 10px;
+    background: #4caf50; color: #fff; cursor: pointer;
+  }
+  .letter.used { background: #555; cursor: default; }
+  #current { min-height: 44px; font-size: 26px; letter-spacing: 4px; margin: 10px; }
+  .buttons { display: flex; gap: 10px; }
+  button.action {
+    padding: 10px 18px; font-size: 16px; border: none; border-radius: 8px;
+    background: #2196f3; color: #fff; cursor: pointer;
+  }
+  #msg { min-height: 24px; margin-top: 12px; font-size: 16px; }
+  p { margin: 6px; }
+</style>
+</head>
+<body>
+<h2>🎉 हैप्पी वर्ड गेम</h2>
+<p>स्कोर: <span id="score">0</span></p>
+<div class="letters" id="letters"></div>
+<div id="current"></div>
+<div class="buttons">
+  <button class="action" id="submit">जाँचें</button>
+  <button class="action" id="clear" style="background:#f44336">मिटाएँ</button>
+  <button class="action" id="shuffle" style="background:#ff9800">नए अक्षर</button>
+</div>
+<div id="msg"></div>
+
+<script>
+// शब्दों की सूची (अक्षर इन्हीं से बनते हैं)
+const words = ["नमस्ते", "खुश", "दोस्त", "मस्ती", "गाना", "खेल", "हंसी", "खुशी", "मन", "सुख"];
+
+let target, letters, chosen, score = 0;
+
+function newRound() {
+  target = words[Math.floor(Math.random() * words.length)];
+  letters = shuffle([...target]);
+  chosen = [];
+  render();
+  msg("शब्द बनाएँ!");
+}
+
+function shuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+function render() {
+  const box = document.getElementById("letters");
+  box.innerHTML = "";
+  letters.forEach((ch, i) => {
+    const b = document.createElement("button");
+    b.className = "letter" + (chosen.includes(i) ? " used" : "");
+    b.textContent = ch;
+    b.onclick = () => pick(i);
+    box.appendChild(b);
+  });
+  document.getElementById("current").textContent = chosen.map(i => letters[i]).join("");
+}
+
+function pick(i) {
+  if (chosen.includes(i)) return;
+  chosen.push(i);
+  render();
+}
+
+function msg(text) {
+  document.getElementById("msg").textContent = text;
+}
+
+document.getElementById("submit").onclick = () => {
+  const word = chosen.map(i => letters[i]).join("");
+  if (word === target) {
+    score += 10;
+    document.getElementById("score").textContent = score;
+    msg("शाबाश! सही शब्द 🎉");
+    setTimeout(newRound, 1000);
+  } else if (word.length) {
+    msg("गलत शब्द, फिर से कोशिश करें।");
+  }
+};
+
+document.getElementById("clear").onclick = () => {
+  chosen = [];
+  render();
+};
+
+document.getElementById("shuffle").onclick = () => {
+  letters = shuffle([...letters]);
+  chosen = [];
+  render();
+};
+
+newRound();
+</script>
+</body>
+</html>￼Enter
