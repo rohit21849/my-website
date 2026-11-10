@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy - My Website</title>
+
+<style>
+body {
+    background: #101522;
+    color: white;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    line-height: 1.7;
+}
+.box {
+    max-width: 700px;
+    margin: auto;
+    background: #202945;
+    padding: 25px;
+    border-radius: 15px;
+}
+h1, h2 {
+    color: #00ffd5;
+}
+a {
+    color: #00ffd5;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h1>Privacy Policy</h1>
+
+<p>Last Updated: November 2026</p>
+
+<p>Welcome to My Website. Your privacy is important to us.</p>
+
+<h2>1. Information We Collect</h2>
+<p>Our browser games do not ask visitors to create an account
+or provide personal information.</p>
+
+<h2>2. Cookies</h2>
+<p>This website does not intentionally use cookies to collect
+personal information. However, our hosting provider or
+third-party services may use technical data.</p>
+
+<h2>3. Third-Party Services</h2>
+<p>This website is hosted using GitHub Pages. GitHub may
+process technical information according to its own privacy policy.</p>
+
+<h2>4. Children's Privacy</h2>
+<p>We do not knowingly request personal information from children.</p>
+
+<h2>5. Changes to This Policy</h2>
+<p>We may update this Privacy Policy when our website changes.</p>
+
+<h2>6. Contact Us</h2>
+<p>For questions, visit our GitHub profile:</p>
+
+<a href="https://github.com/rohit21849">
+Visit GitHub Profile
+</a>
+
+<br><br>
+
+<a href="index.html">Back to Home</a>
+
+</div>
+</body>
+</html>￼Enter
