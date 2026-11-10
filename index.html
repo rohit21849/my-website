@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bubble Navigation Bar</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #10152b;
+    font-family: Arial;
+}
+
+.navbar {
+    display: flex;
+    gap: 15px;
+    padding: 15px;
+    background: #202945;
+    border-radius: 50px;
+    box-shadow: 0 10px 30px #0008;
+}
+
+.navbar button {
+    width: 55px;
+    height: 55px;
+    border: none;
+    border-radius: 50%;
+    background: #34415f;
+    color: white;
+    font-size: 23px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.navbar button.active {
+    background: linear-gradient(135deg,#00e5ff,#7b61ff);
+    transform: translateY(-15px) scale(1.15);
+    box-shadow: 0 8px 20px #00d9ff77;
+}
+
+.navbar button:active {
+    transform: scale(0.9);
+}
+</style>
+</head>
+
+<body>
+
+<div class="navbar">
+    <button class="active" onclick="select(this)">🏠</button>
+    <button onclick="select(this)">🔍</button>
+    <button onclick="select(this)">❤️</button>
+    <button onclick="select(this)">💬</button>
+    <button onclick="select(this)">👤</button>
+</div>
+
+<script>
+function select(element) {
+    document.querySelectorAll(".navbar button")
+    .forEach(btn => btn.classList.remove("active"));
+
+    element.classList.add("active");
+}
+</script>
+
+</body>
+</html>￼Enter
